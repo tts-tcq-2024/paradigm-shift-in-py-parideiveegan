@@ -5,7 +5,7 @@ def check_soc(soc):
 def check_chargeRate(charge_rate):
   return (charge_rate < 0.8)
 def battery_is_ok(temperature, soc, charge_rate):
-  return check_temperature(temperature) and check_soc(soc)) and check_chargeRate(charge_rate)
+  return check_temperature(temperature) and check_soc(soc) and check_chargeRate(charge_rate)
  
   
   
