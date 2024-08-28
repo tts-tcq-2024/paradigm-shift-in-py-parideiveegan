@@ -1,8 +1,13 @@
-
+def check_temperature(temperature):
+  return (0< temperature <45)
+def check_soc(soc):
+  return (20< soc < 80)
+def check_chargeRate(charge_rate):
+  return (charge_rate < 0.8)
 def battery_is_ok(temperature, soc, charge_rate):
-  if (0< temperature <45) and (20< soc <80) and (charge_rate < 0.8):
-    return True
-  return False
+  return check_temperature(temperature) and check_soc(soc)) and check_chargeRate(charge_rate)
+ 
+  
   
 
 '''  
