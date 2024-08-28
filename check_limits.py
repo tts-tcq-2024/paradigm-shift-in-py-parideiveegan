@@ -1,6 +1,6 @@
 
 def battery_is_ok(temperature, soc, charge_rate):
-  if (temperature > 0 or temperature < 45) and (soc > 20 or soc < 80) and (charge_rate < 0.8):
+  if (0< temperature >45) and (20< soc >80) and (charge_rate < 0.8):
     return True
   return False
   
