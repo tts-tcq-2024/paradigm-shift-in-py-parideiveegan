@@ -22,3 +22,5 @@ if __name__ == '__main__':
   assert(battery_is_ok(50, 85, 0) is False)
   assert(battery_is_ok(40, 80, 0.6) is False)
   assert(battery_is_ok(30, 60, 0.8) is False)
+  assert(battery_is_ok(90,85, 0.9) is False)
+  assert(battery_is_ok(-2,18,-1) is False)
