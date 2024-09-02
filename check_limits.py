@@ -1,11 +1,20 @@
-def check_temperature(temperature):
-  return (0< temperature <45)
-def check_soc(soc):
-  return (20< soc < 80)
-def check_chargeRate(charge_rate):
-  return (charge_rate < 0.8)
-def battery_is_ok(temperature, soc, charge_rate):
-  return check_temperature(temperature) and check_soc(soc) and check_chargeRate(charge_rate)
+
+def check_parameter_range(parameter_value, parameter_name, min, max):
+  breach_status = "Normal"
+  range_status = "is in range"  
+  if (parameter_value < min):
+    breach_status = "Low"
+    range_status = "is out of range"
+    
+  elif(parameter_value > max):
+    breach_status = "High"
+    range_status = "is out of range"
+  print(parameter_name+" "+range_status+", the value is "+breach_status)
+  
+  return(min<parameter_value<max)
+  
+def battery_is_ok(temperature, soc, charge_rate):  
+  return check_parameter_range(temperature,"Temperature",0,45) and check_parameter_range(soc,"SOC",20,80) and check_parameter_range(charge_rate,"charge_rate",0,0.8)
  
 
 if __name__ == '__main__':
@@ -13,3 +22,5 @@ if __name__ == '__main__':
   assert(battery_is_ok(50, 85, 0) is False)
   assert(battery_is_ok(40, 80, 0.6) is False)
   assert(battery_is_ok(30, 60, 0.8) is False)
+  assert(battery_is_ok(90,85, 0.9) is False)
+  assert(battery_is_ok(-2,18,-1) is False)
