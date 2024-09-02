@@ -10,7 +10,16 @@ def check_parameter_breach(parameter_value, parameter_name, min, max):
   printf(parameter_name+" "+range_status+", the value is "+breach_status)
   
 def check_parameter_range(parameter_value, parameter_name, min, max):
-  check_parameter_breach(parameter_value, parameter_name, min, max)
+  breach_status = "Normal
+  range_status = "is in range"
+  if (parameter_value < min):
+    breach_status = "Low"
+    range_status = "is out of range"
+  elif(parameter_value > max):
+    breach_status = "High"
+    range_status = "is out of range"
+  printf(parameter_name+" "+range_status+", the value is "+breach_status)
+  #check_parameter_breach(parameter_value, parameter_name, min, max)
   return(min<parameter_value<max)
   
 def battery_is_ok(temperature, soc, charge_rate):  
