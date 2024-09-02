@@ -10,7 +10,7 @@
   printf(parameter_name+" "+range_status+", the value is "+breach_status)"""
   
 def check_parameter_range(parameter_value, parameter_name, min, max):
-  breach_status = "Normal
+  breach_status = "Normal"
   range_status = "is in range"
   if (parameter_value < min):
     breach_status = "Low"
