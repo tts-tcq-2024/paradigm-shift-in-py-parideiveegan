@@ -1,4 +1,4 @@
-def check_parameter_breach(parameter_value, parameter_name, min, max):
+"""def check_parameter_breach(parameter_value, parameter_name, min, max):
   breach_status = "Normal
   range_status = "is in range"
   if (parameter_value < min):
@@ -7,7 +7,7 @@ def check_parameter_breach(parameter_value, parameter_name, min, max):
   elif(parameter_value > max):
     breach_status = "High"
     range_status = "is out of range"
-  printf(parameter_name+" "+range_status+", the value is "+breach_status)
+  printf(parameter_name+" "+range_status+", the value is "+breach_status)"""
   
 def check_parameter_range(parameter_value, parameter_name, min, max):
   breach_status = "Normal
