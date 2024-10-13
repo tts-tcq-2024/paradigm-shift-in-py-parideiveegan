@@ -1,9 +1,9 @@
 from Early_warning import get_warning
 def parameter_range_status(parameter_value, parameter_name, min, max, breach_status, range_status):
-  if (parameter_value < min):
+  if (parameter_value <= min):
     breach_status = "Low"
     range_status = "is out of range"    
-  elif(parameter_value > max):
+  elif(parameter_value => max):
     breach_status = "High"
     range_status = "is out of range"
   return [breach_status, range_status]
@@ -23,7 +23,11 @@ def check_parameter_range(parameter_value, parameter_name, min, max, key):
   
 def battery_is_ok(temperature, soc, charge_rate):
   parameter_warning = {temperature:1, soc:1, charge_rate:1}
-  return check_parameter_range(temperature,"Temperature",0,45,parameter_warning[temperature]) and check_parameter_range(soc,"SOC",20,80, parameter_warning[soc]) and check_parameter_range(charge_rate,"charge_rate",0,0.8, parameter_warning[charge_rate])
+  check_temperature = check_parameter_range(temperature,"Temperature",0,45,parameter_warning[temperature])
+  check_soc = check_parameter_range(soc,"SOC",20,80, parameter_warning[soc])
+  check_charge_rate = check_parameter_range(charge_rate,"charge_rate",0,0.8, parameter_warning[charge_rate])
+  return check_temperature and check_soc and check_charge_rate
+ 
  
 if __name__ == '__main__':
   assert(battery_is_ok(25, 70, 0.7) is True)
