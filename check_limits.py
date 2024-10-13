@@ -1,5 +1,5 @@
 from Early_warning import get_warning
-def parameter_range_status(parameter_value, parameter_name, min, max):
+def parameter_range_status(parameter_value, parameter_name, min, max, breach_status, range_status):
   breach_status = "Normal"
   range_status = "is in range"  
   if (parameter_value < min):
@@ -12,7 +12,7 @@ def parameter_range_status(parameter_value, parameter_name, min, max):
   
 def check_parameter_range(parameter_value, parameter_name, min, max, key):
   if (min<parameter_value<max):
-    status = parameter_range_status(parameter_value, parameter_name, min, max)
+    status = parameter_range_status(parameter_value, parameter_name, min, max, breach_status, range_status)
   else:
     status = get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status)
   breach_status = status[0]
