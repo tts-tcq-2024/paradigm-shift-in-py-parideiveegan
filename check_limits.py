@@ -1,20 +1,46 @@
+def set_warning_status(parameter_value, parameter_name, min, max,breach_status, range_status):
+  if (parameter_value < min):
+    breach_status = "Warning"
+    range_status = "Approaching discharge"
+    
+  elif(parameter_value > max):
+    breach_status = "Warning"
+    range_status = "Approaching charge-peak"
+  return [breach_status, range_status]
+  
+def get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status):
+  if not key:
+    return
+  parameter_value_tolerance = (parameter_value*5)/100
+  min = min + parameter_value_tolerance
+  max = max - parameter_value_tolerance
+  if not (min<parameter_value<max):
+    return set_warning_status(parameter_value, parameter_name, min, max,breach_status, range_status)
+  
+    
+  
 
-def check_parameter_range(parameter_value, parameter_name, min, max):
+def check_parameter_range(parameter_value, parameter_name, min, max, key):
   breach_status = "Normal"
-  range_status = "is in range"  
+  range_status = "is in range"
+  status = []
   if (parameter_value < min):
     breach_status = "Low"
     range_status = "is out of range"
     
   elif(parameter_value > max):
     breach_status = "High"
-    range_status = "is out of range"
-  print(parameter_name+" "+range_status+", the value is "+breach_status)
+    range_status = "is out of range"  
+  status = get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status)
+  breach_status = status[0]
+  range_status = status[1]
+  print(parameter_name+" "+range_status+", the value is at "+breach_status)
   
   return(min<parameter_value<max)
   
-def battery_is_ok(temperature, soc, charge_rate):  
-  return check_parameter_range(temperature,"Temperature",0,45) and check_parameter_range(soc,"SOC",20,80) and check_parameter_range(charge_rate,"charge_rate",0,0.8)
+def battery_is_ok(temperature, soc, charge_rate):
+  parameter_warning = {temperature:1, soc:1, charge_rate:1}
+  return check_parameter_range(temperature,"Temperature",0,45,parameter_warning.vlaue(temperature)) and check_parameter_range(soc,"SOC",20,80, parameter_warning.vlaue(soc)) and check_parameter_range(charge_rate,"charge_rate",0,0.8, parameter_warning.vlaue(charge_rate))
  
 
 if __name__ == '__main__':
