@@ -40,7 +40,7 @@ def check_parameter_range(parameter_value, parameter_name, min, max, key):
   
 def battery_is_ok(temperature, soc, charge_rate):
   parameter_warning = {temperature:1, soc:1, charge_rate:1}
-  return check_parameter_range(temperature,"Temperature",0,45,parameter_warning.vlaue(temperature)) and check_parameter_range(soc,"SOC",20,80, parameter_warning.vlaue(soc)) and check_parameter_range(charge_rate,"charge_rate",0,0.8, parameter_warning.vlaue(charge_rate))
+  return check_parameter_range(temperature,"Temperature",0,45,parameter_warning.value(temperature)) and check_parameter_range(soc,"SOC",20,80, parameter_warning.value(soc)) and check_parameter_range(charge_rate,"charge_rate",0,0.8, parameter_warning.value(charge_rate))
  
 
 if __name__ == '__main__':
