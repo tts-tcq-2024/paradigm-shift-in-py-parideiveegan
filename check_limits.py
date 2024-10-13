@@ -16,7 +16,7 @@ def get_warning(parameter_value, parameter_name, min, max, key, breach_status, r
   max = max - parameter_value_tolerance
   if not (min<parameter_value<max):
     return set_warning_status(parameter_value, parameter_name, min, max,breach_status, range_status)
-  
+  return [breach_status, range_status]
     
   
 
