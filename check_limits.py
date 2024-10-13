@@ -23,7 +23,7 @@ def get_warning(parameter_value, parameter_name, min, max, key, breach_status, r
 def check_parameter_range(parameter_value, parameter_name, min, max, key):
   breach_status = "Normal"
   range_status = "is in range"
-  status = []
+  
   if (parameter_value < min):
     breach_status = "Low"
     range_status = "is out of range"
