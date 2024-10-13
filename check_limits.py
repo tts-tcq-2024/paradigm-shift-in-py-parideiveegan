@@ -12,9 +12,10 @@ def check_parameter_range(parameter_value, parameter_name, min, max, key):
   breach_status = "Normal"
   range_status = "is in range"  
   if (min<parameter_value<max):
-    status = parameter_range_status(parameter_value, parameter_name, min, max, breach_status, range_status)
-  else:
     status = get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status)
+  else:
+    status = parameter_range_status(parameter_value, parameter_name, min, max, breach_status, range_status)
+    
   breach_status = status[0]
   range_status = status[1]
   print(parameter_name+" "+range_status+", the value is at "+breach_status)  
