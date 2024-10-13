@@ -3,7 +3,7 @@ def parameter_range_status(parameter_value, parameter_name, min, max, breach_sta
   if (parameter_value <= min):
     breach_status = "Low"
     range_status = "is out of range"    
-  elif(parameter_value => max):
+  elif(parameter_value >= max):
     breach_status = "High"
     range_status = "is out of range"
   return [breach_status, range_status]
