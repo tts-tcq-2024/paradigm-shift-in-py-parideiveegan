@@ -1,16 +1,20 @@
-from Early_warning import get_warning  
-def check_parameter_range(parameter_value, parameter_name, min, max, key):
+from Early_warning import get_warning
+def parameter_range_status(parameter_value, parameter_name, min, max):
   breach_status = "Normal"
-  range_status = "is in range"
-  
+  range_status = "is in range"  
   if (parameter_value < min):
     breach_status = "Low"
-    range_status = "is out of range"
-    
+    range_status = "is out of range"    
   elif(parameter_value > max):
     breach_status = "High"
-    range_status = "is out of range"  
-  status = get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status)
+    range_status = "is out of range"
+  return [breach_status, range_status]
+  
+def check_parameter_range(parameter_value, parameter_name, min, max, key):
+  if (min<parameter_value<max):
+    status = parameter_range_status(parameter_value, parameter_name, min, max)
+  else:
+    status = get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status)
   breach_status = status[0]
   range_status = status[1]
   print(parameter_name+" "+range_status+", the value is at "+breach_status)  
