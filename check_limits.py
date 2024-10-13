@@ -10,7 +10,7 @@ def set_warning_status(parameter_value, parameter_name, min, max,breach_status, 
   
 def get_warning(parameter_value, parameter_name, min, max, key, breach_status, range_status):
   if not key:
-    return
+    return [breach_status, range_status]
   parameter_value_tolerance = (parameter_value*5)/100
   min = min + parameter_value_tolerance
   max = max - parameter_value_tolerance
